@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📊 SPACEMAN PREDICT - STATISTIK</title>
+  <style>
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background-color: #000;
+      color: #00ccff;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: url('Icon-bersih.png') no-repeat center center;
+      background-size: contain;
+      opacity: 0.2;
+      animation: float 6s ease-in-out infinite;
+      z-index: -1;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00ccff;
+      text-shadow: 0 0 10px #00ccff;
+      margin-top: 20px;
+    }
+
+    .phone-info {
+      text-align: center;
+      font-size: 0.9em;
+      margin-top: 10px;
+      color: #999;
+    }
+
+    .prediction-box {
+      background: rgba(0, 0, 0, 0.7);
+      border: 2px solid #00ccff;
+      border-radius: 15px;
+      padding: 20px;
+      max-width: 600px;
+      margin: 30px auto;
+      box-shadow: 0 0 15px #00ccff;
+      text-align: center;
+    }
+
+    .prediction-box h2 {
+      color: #00ffea;
+      margin-bottom: 15px;
+    }
+
+    .prediction {
+      font-size: 2em;
+      color: #0f0;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { color: #0f0; }
+      50% { color: #ff0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🚀 SPACEMAN PREDICTION STATISTIK 📊</h1>
+    <div class="phone-info" id="phoneInfo">📱 Mendeteksi perangkat...</div>
+
+    <div class="prediction-box">
+      <h2>📈 Prediksi Crash / Tinggi Berikutnya:</h2>
+      <div class="prediction" id="predictionValue">⏳ Menghitung...</div>
+    </div>
+  </div>
+
+  <script>
+    function generatePrediction() {
+      const nilai = (Math.random() * 3 + 1.2).toFixed(2);
+      document.getElementById("predictionValue").textContent = `💥 Crash diperkirakan di ${nilai}x`;
+    }
+    generatePrediction();
+    setInterval(generatePrediction, 7000);
+
+    function detectDevice() {
+      let info = navigator.userAgent;
+      let merk = "Tidak dikenali";
+
+      if (/Samsung/i.test(info)) merk = "Samsung";
+      else if (/Oppo/i.test(info)) merk = "Oppo";
+      else if (/Vivo/i.test(info)) merk = "Vivo";
+      else if (/Xiaomi/i.test(info)) merk = "Xiaomi";
+      else if (/Realme/i.test(info)) merk = "Realme";
+      else if (/iPhone/i.test(info)) merk = "iPhone";
+      else if (/Android/i.test(info)) merk = "Android";
+
+      document.getElementById("phoneInfo").textContent = `📱 Deteksi perangkat: ${merk}`;
+    }
+    detectDevice();
+  </script>
+</body>
+</html>
